@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Хранилище banking_bdModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "banking_bd.dbo.Admin_Table" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="Admin_Table">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="userAccount">
+          <Key>
+            <PropertyRef Name="Account_No" />
+          </Key>
+          <Property Name="Account_No" Type="decimal" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="DOB" Type="nvarchar" MaxLength="50" />
+          <Property Name="PhoneNomber" Type="nvarchar" MaxLength="50" />
+          <Property Name="Address" Type="nvarchar(max)" />
+          <Property Name="Picture" Type="image" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="50" />
+          <Property Name="Maritial_status" Type="nvarchar" MaxLength="50" />
+          <Property Name="Mother_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Father_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Balance" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Date" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityContainer Name="Хранилище banking_bdModelContainer">
+          <EntitySet Name="userAccount" EntityType="Self.userAccount" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Admin_Table" EntityType="Self.Admin_Table" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Admin_Table].[id] AS [id], 
+    [Admin_Table].[Username] AS [Username], 
+    [Admin_Table].[Password] AS [Password]
+    FROM [dbo].[Admin_Table] AS [Admin_Table]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="banking_bdModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Admin_Table">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="banking_bdEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Admin_Table" EntityType="Self.Admin_Table" />
+          <EntitySet Name="userAccount" EntityType="banking_bdModel.userAccount" />
+        </EntityContainer>
+        <EntityType Name="userAccount">
+          <Key>
+            <PropertyRef Name="Account_No" />
+          </Key>
+          <Property Name="Account_No" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DOB" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNomber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Picture" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Maritial_status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Mother_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Father_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Balance" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Date" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище banking_bdModelContainer" CdmEntityContainer="banking_bdEntities">
+          <EntitySetMapping Name="Admin_Table">
+            <EntityTypeMapping TypeName="banking_bdModel.Admin_Table">
+              <MappingFragment StoreEntitySet="Admin_Table">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="userAccount">
+            <EntityTypeMapping TypeName="banking_bdModel.userAccount">
+              <MappingFragment StoreEntitySet="userAccount">
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+                <ScalarProperty Name="Father_Name" ColumnName="Father_Name" />
+                <ScalarProperty Name="Mother_Name" ColumnName="Mother_Name" />
+                <ScalarProperty Name="Maritial_status" ColumnName="Maritial_status" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Picture" ColumnName="Picture" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="PhoneNomber" ColumnName="PhoneNomber" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Account_No" ColumnName="Account_No" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

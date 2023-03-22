@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище banking_bdModelContainer" CdmEntityContainer="banking_bdEntities">
+    <EntitySetMapping Name="Admin_Table">
+      <EntityTypeMapping TypeName="banking_bdModel.Admin_Table">
+        <MappingFragment StoreEntitySet="Admin_Table">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="userAccount">
+      <EntityTypeMapping TypeName="banking_bdModel.userAccount">
+        <MappingFragment StoreEntitySet="userAccount">
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Balance" ColumnName="Balance" />
+          <ScalarProperty Name="Father_Name" ColumnName="Father_Name" />
+          <ScalarProperty Name="Mother_Name" ColumnName="Mother_Name" />
+          <ScalarProperty Name="Maritial_status" ColumnName="Maritial_status" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Picture" ColumnName="Picture" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="PhoneNomber" ColumnName="PhoneNomber" />
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Account_No" ColumnName="Account_No" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище banking_bdModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "banking_bd.dbo.Admin_Table" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+  <EntityType Name="Admin_Table">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Username" Type="nvarchar" MaxLength="50" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="userAccount">
+    <Key>
+      <PropertyRef Name="Account_No" />
+    </Key>
+    <Property Name="Account_No" Type="decimal" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="DOB" Type="nvarchar" MaxLength="50" />
+    <Property Name="PhoneNomber" Type="nvarchar" MaxLength="50" />
+    <Property Name="Address" Type="nvarchar(max)" />
+    <Property Name="Picture" Type="image" />
+    <Property Name="Gender" Type="nvarchar" MaxLength="50" />
+    <Property Name="Maritial_status" Type="nvarchar" MaxLength="50" />
+    <Property Name="Mother_Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Father_Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Balance" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="Date" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityContainer Name="Хранилище banking_bdModelContainer">
+    <EntitySet Name="userAccount" EntityType="Self.userAccount" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Admin_Table" EntityType="Self.Admin_Table" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Admin_Table].[id] AS [id], 
+    [Admin_Table].[Username] AS [Username], 
+    [Admin_Table].[Password] AS [Password]
+    FROM [dbo].[Admin_Table] AS [Admin_Table]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>
